@@ -23,7 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -32,6 +33,9 @@ var app = builder.Build();
 app.UseHsts();
 
 app.UseHttpsRedirection();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
