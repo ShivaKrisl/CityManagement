@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CityManager.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:CityManager.WebAPI.Controllers.v1.CityController">
+            <summary>
+            Controller for managing cities in the database.
+            </summary>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.#ctor(CitiesManager.Core.Services_Interfaces.ICitiesAdder,CitiesManager.Core.Services_Interfaces.ICitiesGetterService,CitiesManager.Core.Services_Interfaces.ICitiesUpdateService,CitiesManager.Core.Services_Interfaces.ICitiesDeleteService)">
+            <summary>
+            Constructor for CityController.
+            </summary>
+            <param name="citiesAdder"></param>
+            <param name="citiesGetterService"></param>
+            <param name="citiesUpdateService"></param>
+            <param name="citiesDeleteService"></param>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.GetAllCities">
+            <summary>
+            Get all the cities (City name and Id) from the database.
+            </summary>
+            <returns>List of cities with city name and city ID</returns>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.GetCityById(System.Guid)">
+            <summary>
+            Get a city by its ID.
+            </summary>
+            <param name="cityId">Id(Guid) of city you want to retrieve</param>
+            <returns>City if found else NotFound error</returns>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.GetCityByName(System.String)">
+            <summary>
+            Get a city by its name.
+            </summary>
+            <param name="name">Name of city to be searched</param>
+            <returns>City if found else NotFound error</returns>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.AddCity(CitiesManager.Core.DTOs.CityAddRequest)">
+            <summary>
+            Add a new city to the database.
+            </summary>
+            <param name="cityAddRequest">City request that should have valid unique city name</param>
+            <returns>City object if created</returns>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.DeleteCity(System.Guid)">
+            <summary>
+            Delete a city by its ID.
+            </summary>
+            <param name="cityId">Id(Guid) of the city to be deleted</param>
+            <returns>No content if city is deleted else NotFound error</returns>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v1.CityController.UpdateCity(System.Guid,CitiesManager.Core.DTOs.CityAddRequest)">
+            <summary>
+            Update a city by its ID.
+            </summary>
+            <param name="cityId">Id the city to be updated</param>
+            <param name="cityAddRequest">City request object that has new valid unique city name </param>
+            <returns>City object if updated success else NotFound error</returns>
+        </member>
+        <member name="T:CityManager.WebAPI.Controllers.v2.CityController">
+            <summary>
+            Controller for managing cities in the database.
+            </summary>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v2.CityController.#ctor(CitiesManager.Core.Services_Interfaces.ICitiesGetterService)">
+            <summary>
+            Constructor for CityController.
+            </summary>
+            <param name="citiesGetterService"></param>
+        </member>
+        <member name="M:CityManager.WebAPI.Controllers.v2.CityController.GetAllCities">
+            <summary>
+            Get all the city names from the database.
+            </summary>
+            <returns>List of cities with city name</returns>
+        </member>
+    </members>
+</doc>
