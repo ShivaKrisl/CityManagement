@@ -62,6 +62,19 @@ apiVersioningBuilder.AddApiExplorer(options => {
     options.SubstituteApiVersionInUrl = true;
 });
 
+// CORS for Angular 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policyBuilder =>
+    {
+        policyBuilder.WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()) // Client app urls from appsettings.json
+               //.AllowAnyHeader()
+               //.AllowAnyMethod();
+               .WithHeaders("Authorization", "origin", "accept", "content-type")
+               .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -76,6 +89,10 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "1.0");
     options.SwaggerEndpoint("/swagger/v2/swagger.json", "2.0");
 });
+
+app.UseRouting();
+
+app.UseCors(); // between UseRouting and UseAuthorization
 
 app.UseAuthorization();
 
